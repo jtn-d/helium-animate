@@ -10,6 +10,8 @@ Element wrapper for the [animate.cs](https://github.com/daneden/animate.css) lib
 </helium-animate>
 ```
 
+Note! Element should contain only one child.
+
 ## Running Element
 
     polyserve

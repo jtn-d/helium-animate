@@ -21,36 +21,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <p><code>&lt;helium-animate type="shake" event="mouseenter" duration="500"&gt;</code></p>
 
     <helium-animate type="shake" event="mouseenter" duration="500">
-      <h2>Animate.css</h2>
       <div>
-        <a href="https://github.com/daneden/animate.css">
-          <img style="width:100px" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png">      
-        </a>
+        <h2>Animate.css</h2>
+        <div>
+          <a href="https://github.com/daneden/animate.css">
+            <img style="width:100px" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png">      
+          </a>
+        </div>
       </div>
     </helium-animate>
 
     <p><code>&lt;helium-animate type="pulse" event="click" duration="200"&gt;</code></p>
 
     <helium-animate type="pulse" event="click" duration="200">
-      <h2>Animate.css</h2>
       <div>
-        <a href="https://github.com/daneden/animate.css">
-          <img style="width:100px" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png">      
-        </a>
+        <h2>Animate.css</h2>
+        <div>
+          <a href="https://github.com/daneden/animate.css">
+            <img style="width:100px" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png">      
+          </a>
+        </div>
       </div>
     </helium-animate>
     
-    <helium-animate type="shake" event="blur" duration="500">
-      <input type="text"></input>
-    </helium-animate>
+    <p><code>&lt;helium-animate type="shake" event="focus" duration="200"&gt;</code></p>
     
-    <helium-animate type="pulse" event="blur" duration="200">
-      <button>Button</button>
+    <div>
+      <helium-animate type="shake" event="focus" duration="200">
+        <input type="text"></input>
+      </helium-animate>
+    </div>
+    
+    <p><code>&lt;helium-animate type="swing" event="blur" duration="200"&gt;</code></p>
+    
+    <div>
+      <helium-animate type="swing" event="blur" duration="200">
+        <button>Button</button>
+      </helium-animate>
+    </div>
+    
+    <p><code>&lt;helium-animate type="swing" event="submit" duration="200"&gt;</code></p>
+    
+    <helium-animate type="slideOutRight" event="submit" duration="500">
+      <form action="" enctype="application/json" onsubmit="return _submit(this);">
+        First name:<br>
+        <input type="text" name="firstname">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname">
+        <br><br>
+        <input type="submit" value="Submit">  
+      </form>
     </helium-animate>
     
     <script>
-      var elem = document.querySelector('helium-animate');
+      var form = document.querySelector('form');
+      
+      function _submit(form) {
+        return false;
+      }
     </script>
-
   </body>
 </html>

@@ -20,6 +20,8 @@ Example:
       duration="500">
       <h2>Animate.css</h2>
     </helium-animate>
+    
+Note! Element should contain only one child.
 
 @group Seed Elements
 @element helium-animate
@@ -27,11 +29,8 @@ Example:
 @hero hero.svg
 -->
 <dom-module id="helium-animate">
-
   <template>
-    <div id="root">
-      <content></content>
-    </div>
+    <content></content>
   </template>
 </dom-module>
 
@@ -58,7 +57,8 @@ Example:
       /**
        * Event triggering animation
        * 
-       * See https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent.
+       * See https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent and
+       * https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent.
        *
        */
       event: {
@@ -73,7 +73,7 @@ Example:
       duration: {
         type: Number,
         value: 0
-      }      
+      }     
     },
 
     // Element Lifecycle
@@ -85,7 +85,8 @@ Example:
       //
       // This is the point where you should make modifications to the DOM (when
       // necessary), or kick off any processes the element wants to perform.
-      this.$.root.addEventListener(this.event, this.animate.bind(this));
+      this._elem = this.children[0];
+      this._elem.addEventListener(this.event, this.animate.bind(this));
     },
 
     attached: function() {
@@ -102,26 +103,25 @@ Example:
       // removed from a document.
       //
       // Use this to clean up anything you did in `attached`.
-      this.$.root.removeEventListener(this.animate);
+      this._elem.removeEventListener(this.animate);
     },
 
     // Element Behavior
 
     /**
-     * Triggers animation
+     * Triggers animation manually
      *
      * See `type` and `duration` to define animation.
      */
     
-    animate: function() {
-      console.log(this.event);
-      this.$.root.classList.add('animated');
-      this.$.root.classList.add('infinite');        
-      this.$.root.classList.add(this.type);
+    animate: function(e) {
+      this._elem.classList.add('animated');
+      this._elem.classList.add('infinite');        
+      this._elem.classList.add(this.type);
       setTimeout(function() {
-        this.$.root.classList.remove('animated');
-        this.$.root.classList.remove('infinite');
-        this.$.root.classList.remove(this.type);  
+        this._elem.classList.remove('animated');
+        this._elem.classList.remove('infinite');
+        this._elem.classList.remove(this.type);  
       }.bind(this), this.duration);
     }
 
