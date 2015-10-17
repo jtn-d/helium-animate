@@ -1,9 +1,6 @@
 {
   "name": "helium-animate",
   "version": "0.1.0",
-  "authors": [
-    "Anonymous <anonymous@example.com>"
-  ],
   "description": "Element wrapper for animate.cs library",
   "keywords": [
     "web-component",
@@ -11,7 +8,7 @@
     "animate.cs"
   ],
   "main": "helium-animate.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
+  "license": "MIT",
   "homepage": "https://github.com/jtn-d/helium-animate/",
   "ignore": [
     "/.*",
@@ -19,7 +16,7 @@
   ],
   "dependencies": {
     "animate.css": "~3.4.0",
-    "polymer": "Polymer/polymer#^1.1.0"
+    "polymer": "Polymer/polymer#~1.1.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
