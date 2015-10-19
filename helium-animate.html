@@ -94,7 +94,7 @@ Note! Element should contain only one child.
       // removed from a document.
       //
       // Use this to clean up anything you did in `attached`.
-      this._elem.removeEventListener(this.animate);
+      this._elem.removeEventListener(this.event, this.animate);
     },
 
     // Element Behavior
