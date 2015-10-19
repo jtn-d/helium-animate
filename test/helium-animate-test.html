@@ -18,17 +18,29 @@
     <!-- You can use the document as a place to set up your fixtures. -->
     <test-fixture id="plain-anim">
       <template>
-        <helium-animate></helium-animate>
+        <helium-animate>
+          <button id="button"></button>
+        </helium-animate>
       </template>
     </test-fixture>
 
+    <test-fixture id="anim">
+      <template>
+        <helium-animate type="pulse" event="click" duration="500">
+          <button id="button"></button>
+        </helium-animate>
+      </template>
+    </test-fixture>
+    
     <script>
       var anim;
+      var button;
 
       describe('<helium-animate>', function() {
 
         beforeEach(function() {
           anim = fixture('plain-anim');
+          button = anim.querySelector('#button');
         });
         
         it('should be ok', function() {
@@ -36,8 +48,52 @@
           expect(anim.type).to.be.equal('');
           expect(anim.event).to.be.equal('');
           expect(anim.duration).to.be.equal(0);
+          
+          expect(button.classList.contains('animated')).to.be.false;
+          expect(button.classList.contains('infinite')).to.be.false;          
         });
 
+      });
+      
+      describe('<helium-animate type="pulse" event="click" duration="500">', function() {
+
+        beforeEach(function() {
+          anim = fixture('anim');
+          button = anim.querySelector('#button');
+        });
+        
+        it('should be ok', function() {
+          expect(anim).to.be.ok;
+          expect(anim.type).to.be.equal('pulse');
+          expect(anim.event).to.be.equal('click');
+          expect(anim.duration).to.be.equal(500);
+          
+          expect(button.classList.contains('animated')).to.be.false;
+          expect(button.classList.contains('infinite')).to.be.false;          
+        });
+
+        it('should perform animation when clicked', function(done) {
+          expect(anim).to.be.ok;
+          expect(anim.type).to.be.equal('pulse');
+          expect(anim.event).to.be.equal('click');
+          expect(anim.duration).to.be.equal(500);
+          
+          expect(button.classList.contains('animated')).to.be.false;
+          expect(button.classList.contains('infinite')).to.be.false; 
+          
+          setTimeout(function(){
+            expect(button.classList.contains('animated')).to.be.true;
+            expect(button.classList.contains('infinite')).to.be.true;
+            
+            setTimeout(function(){
+              expect(button.classList.contains('animated')).to.be.false;
+              expect(button.classList.contains('infinite')).to.be.false;
+              done();             
+            }, 300);
+          }, 200);
+          
+          button.click();
+        });
       });
     </script>
 
